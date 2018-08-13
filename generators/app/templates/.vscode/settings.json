@@ -7,8 +7,10 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": true
   },
+  /* Latex */
   "latex-workshop.latex.tools": [
     {
+      "name": "latexmk",
       "command": "latexmk",
       "args": [
         "-synctex=1",
@@ -17,7 +19,32 @@
         "-pdf",
         "%DOC%"
       ]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": ["%DOCFILE%"]
     }
   ],
-  "latex-workshop.latex.outputDir": "${workspaceRoot}/doc"
+  "latex-workshop.latex.outputDir": "${workspaceRoot}/doc/assigned",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    },
+    {
+      "name": "pdflatex -> bibtex -> pdflatex*2",
+      "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+    }
+  ]
 }
