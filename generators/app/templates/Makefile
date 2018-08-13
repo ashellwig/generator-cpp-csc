@@ -12,7 +12,7 @@ TGT = obj
 INCLUDES = -Iinclude
 DBGOUT = target/debug
 RELOUT = target/release
-UDOCDIR = DOC/assigned
+UDOCDIR = doc/assigned
 # Compiler
 CXX = clang++
 CXXFLAGSREL = -Weverything -std=c++17 -O2 $(INCLUDES)
@@ -58,14 +58,14 @@ $(UDOCDIR)/%.tex: user-doc-clean
 
 # Debug
 ## Run
-run-debug: debug
+run-debug:
 	$(DBGOUT)/ChapterTODO:-Debug.bin
 ## Build
 debug: $(TGT)/debug/ChapterTODO:-DBG
 $(TGT)/debug/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGSDBG) -c $< -o $@
-$(TGT)/debug/Chapter5-DBG: $(DBGOBJS)
-	$(CXX) $(LDFLAGS) $(DBGOBJS) -o $(DBGOUT)/Chapter5-Debug.bin
+$(TGT)/debug/ChapterTODO:-DBG: $(DBGOBJS)
+	$(CXX) $(LDFLAGS) $(DBGOBJS) -o $(DBGOUT)/ChapterTODO:-Debug.bin
 ## Removes Object Files
 clean-dbg:
 	rm -rf $(TGT)/debug/*.o
@@ -76,14 +76,14 @@ clean-all-dbg:
 
 # Release
 ## Run
-run-release: release
-	$(RELOUT)/Chapter5-Release.bin
+run-release:
+	$(RELOUT)/ChapterTODO:-Release.bin
 ## Build
 release: $(TGT)/release/ChapterTODO:-REL
 $(TGT)/release/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGSREL) -c $< -o $@
 $(TGT)/release/ChapterTODO:-REL: $(RELOBJS)
-	$(CXX) $(LDFLAGS) $(RELOBJS) -o $(RELOUT)/Chapter5-Release.bin
+	$(CXX) $(LDFLAGS) $(RELOBJS) -o $(RELOUT)/ChapterTODO:-Release.bin
 	cp $(UDOCDIR)/userdocs.pdf $(RELOUT)/userdocs.pdf
 ## Removes object files
 clean-rel:

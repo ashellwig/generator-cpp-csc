@@ -3,5 +3,8 @@
   "eslint.options": {
     "configFile": ".eslintrc.js"
   },
-  "latex-workshop.latex.autoBuild.onSave.enabled": false
+  "latex-workshop.latex.autoBuild.onSave.enabled": false,
+  "files.associations": {
+    "iostream": "cpp"
+  }
 }

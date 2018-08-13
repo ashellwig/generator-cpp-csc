@@ -64,20 +64,20 @@ module.exports = class extends Generator {
     )
     // bin
     this.fs.copy(
-      this.templatePath('target/debug'),
-      this.destinationPath('target/debug')
+      this.templatePath('target/debug/.gitkeep'),
+      this.destinationPath('target/debug/.gitkeep')
     )
     this.fs.copy(
-      this.templatePath('obj/debug'),
-      this.destinationPath('obj/debug')
+      this.templatePath('obj/debug/.gitkeep'),
+      this.destinationPath('obj/debug/.gitkeep')
     )
     this.fs.copy(
-      this.templatePath('target/release'),
-      this.destinationPath('target/release')
+      this.templatePath('target/release/.gitkeep'),
+      this.destinationPath('target/release/.gitkeep')
     )
     this.fs.copy(
-      this.templatePath('obj/release'),
-      this.destinationPath('obj/release')
+      this.templatePath('obj/release/.gitkeep'),
+      this.destinationPath('obj/release/.gitkeep')
     )
     // settings
     this.fs.copy(
@@ -104,5 +104,11 @@ module.exports = class extends Generator {
       this.templatePath('.gitignore'),
       this.destinationPath('.gitignore')
     )
+  }
+
+  todos () {
+    this.log('Please check Makefile and doc/assigned/main.tex for any \'TODO\' marks.')
+    this.log('Wherever you find these, enter the chapter/module number where applicable.')
+    this.log('On UNIX, simply using the command `sed -i \'s/TODO:/<number>/g\' Makefile` should suffice.')
   }
 }
