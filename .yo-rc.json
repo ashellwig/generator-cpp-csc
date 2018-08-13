@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Ashton Hellwig",
+      "authorEmail": "ahellwig.dev@gmail.com",
+      "authorUrl": "https://github.com/ashellwig"
+    }
+  }
+}
