@@ -4,56 +4,44 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 
 module.exports = class extends Generator {
-  prompting () {
+  async prompting () {
     // Have Yeoman greet the user.
     this.log(
       yosay(`Welcome to the ${chalk.red('generator-csc160-program')} generator!`)
     )
 
-    const prompts = [
-      {
-        type: 'input',
-        name: 'moduleNumber',
-        message: 'which module are we working on?'
-      },
-      {
-        type: 'input',
-        name: 'moduleNumber',
-        message: 'which chapter are we working on?'
-      },
-      {
-        type: 'list',
-        name: 'compiler',
-        message: 'Which compiler would you like to use?',
-        default: 'clang',
-        choices: [
-          'clang',
-          'gcc',
-          'msbuild'
-        ]
-      }
-    ]
-
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props
-    })
+    // this.answers = await this.prompt([
+    //   {
+    //     type: 'input',
+    //     name: 'moduleNumber',
+    //     message: 'which module are we working on?'
+    //   },
+    //   {
+    //     type: 'input',
+    //     name: 'chapterNumber',
+    //     message: 'which chapter are we working on?'
+    //   }
+    // ])
   }
 
   writing () {
     // Docs
     this.fs.copy(
-      this.templatePath('doc/assignment/main.tex'),
-      this.destinationPath('doc/assignment/main.tex'),
-      { moduleNumber: this.moduleNumber },
-      { chapterNumber: this.chapterNumber }
+      this.templatePath('doc/assigned/main.tex'),
+      this.destinationPath('doc/assigned/main.tex')
+      // [
+      //   { moduleNumber: this.prompts.moduleNumber },
+      //   { chapterNumber: this.prompts.chapterNumber }
+      // ]
     )
     // Makefile
     this.fs.copy(
       this.templatePath('Makefile'),
-      this.destinationPath('Makefile'),
-      { moduleNumber: this.moduleNumber },
-      { chapterNumber: this.chapterNumber }
+      this.destinationPath('Makefile')
+      // [
+      //   { moduleNumber: this.prompts.moduleNumber },
+      //   { chapterNumber: this.prompts.chapterNumber }
+      // ]
     )
     // src
     this.fs.copy(
@@ -71,8 +59,25 @@ module.exports = class extends Generator {
     )
     // screenshots
     this.fs.copy(
-      this.templatePath('screenshots/.gitignore'),
-      this.destinationPath('screenshots/.gitignore')
+      this.templatePath('doc/assigned/screenshots/.gitkeep'),
+      this.destinationPath('doc/assigned/screenshots/.gitkeep')
+    )
+    // bin
+    this.fs.copy(
+      this.templatePath('target/debug'),
+      this.destinationPath('target/debug')
+    )
+    this.fs.copy(
+      this.templatePath('obj/debug'),
+      this.destinationPath('obj/debug')
+    )
+    this.fs.copy(
+      this.templatePath('target/release'),
+      this.destinationPath('target/release')
+    )
+    this.fs.copy(
+      this.templatePath('obj/release'),
+      this.destinationPath('obj/release')
     )
     // settings
     this.fs.copy(
@@ -99,9 +104,5 @@ module.exports = class extends Generator {
       this.templatePath('.gitignore'),
       this.destinationPath('.gitignore')
     )
-  }
-
-  install () {
-    this.installDependencies()
   }
 }

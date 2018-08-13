@@ -1,7 +1,7 @@
 # vim: set ts=4 sw=4 ft=sh:
-## Module <%= moduleNumber %> Chapter <%= chapterNumber %> Program
+## Module TODO: Chapter TODO: Program
 ## Ashton S. Hellwig
-## Date: {FIXME}
+## Date: TODO:
 ## CSC160
 ##
 
@@ -14,9 +14,9 @@ DBGOUT = target/debug
 RELOUT = target/release
 UDOCDIR = DOC/assigned
 # Compiler
-CXX = g++
-CXXFLAGSREL = -Wall -std=c++17 -O2 $(INCLUDES)
-CXXFLAGSDBG = -Wall -std=c++17 -g -ggdb $(INCLUDES)
+CXX = clang++
+CXXFLAGSREL = -Weverything -std=c++17 -O2 $(INCLUDES)
+CXXFLAGSDBG = -Weverything -std=c++17 -g -glldb $(INCLUDES)
 SOURCES = $(wildcard $(SRC)/*.cpp)
 DBGOBJS = $(addprefix $(TGT)/debug/, $(notdir $(SOURCES:.cpp=.o)))
 RELOBJS = $(addprefix $(TGT)/release/, $(notdir $(SOURCES:.cpp=.o)))
@@ -59,9 +59,9 @@ $(UDOCDIR)/%.tex: user-doc-clean
 # Debug
 ## Run
 run-debug: debug
-	$(DBGOUT)/Chapter5-Debug.bin
+	$(DBGOUT)/ChapterTODO:-Debug.bin
 ## Build
-debug: $(TGT)/debug/Chapter5-DBG
+debug: $(TGT)/debug/ChapterTODO:-DBG
 $(TGT)/debug/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGSDBG) -c $< -o $@
 $(TGT)/debug/Chapter5-DBG: $(DBGOBJS)
@@ -79,10 +79,10 @@ clean-all-dbg:
 run-release: release
 	$(RELOUT)/Chapter5-Release.bin
 ## Build
-release: $(TGT)/release/Chapter5-REL
+release: $(TGT)/release/ChapterTODO:-REL
 $(TGT)/release/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGSREL) -c $< -o $@
-$(TGT)/release/Chapter5-REL: $(RELOBJS)
+$(TGT)/release/ChapterTODO:-REL: $(RELOBJS)
 	$(CXX) $(LDFLAGS) $(RELOBJS) -o $(RELOUT)/Chapter5-Release.bin
 	cp $(UDOCDIR)/userdocs.pdf $(RELOUT)/userdocs.pdf
 ## Removes object files
