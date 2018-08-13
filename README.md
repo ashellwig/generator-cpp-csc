@@ -3,17 +3,19 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-csc160-program using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-csc160-program using [yarn](https://www.yarnpkg.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo
-npm install -g generator-csc160-program
+yarn global add yo
+yarn global add generator-csc160-program
 ```
 
 Then generate your new project:
 
 ```bash
-yo csc-160-program
+mkdir <my-project>
+cd <my-project>
+yo csc-160-program .
 ```
 
 ## Getting To Know Yeoman
