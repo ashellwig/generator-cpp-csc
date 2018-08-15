@@ -30,8 +30,8 @@ yo csc-160-program .
 MIT © [Ashton Hellwig](https://github.com/ashellwig)
 
 
-[npm-image]: https://badge.fury.io/js/generator-csc160-program.svg
-[npm-url]: https://npmjs.org/package/generator-csc160-program
+[npm-image]: https://badge.fury.io/js/generator-cpp-csc.svg
+[npm-url]: https://npmjs.org/package/generator-cpp-csc
 [travis-image]: https://travis-ci.org/ashellwig/generator-csc160-program.svg?branch=master
 [travis-url]: https://travis-ci.org/ashellwig/generator-csc160-program
 [daviddm-image]: https://david-dm.org/ashellwig/generator-csc160-program.svg?theme=shields.io
