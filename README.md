@@ -5,6 +5,9 @@
 
 First, install [Yeoman](http://yeoman.io) and generator-cpp-csc using [yarn](https://www.yarnpkg.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
+This generator also depends on GNU's version of `sed` to be able to replace the placeholders in the `Makefile` and the docs. If `sed` is not on your path, you will need
+to add it. As of now, there is no way to point to another location for `sed` as we use `this.spawnCommand` to replace the placeholders.
+
 ```bash
 yarn global add yo
 yarn global add generator-cpp-csc

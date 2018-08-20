@@ -9,23 +9,10 @@ module.exports = class extends Generator {
     this.log(
       yosay(`Welcome to the ${chalk.red('generator-csc160-program')} generator!`)
     )
-
-    // const answers = this.prompt([{
-    //   type: 'input',
-    //   name: 'modnum',
-    //   message: 'Which module are we in?'
-    // }, {
-    //   type: 'input',
-    //   name: 'chapnum',
-    //   message: 'Which chapter are we in?'
-    // }])
-
-    // this.log('Module number', answers.modnum)
-    // this.log('Chapter number', answers.chapnum)
-    // return answers
   }
 
   constructor (args, opts) {
+    // Arguments for module and chapter number
     super(args, opts)
     this.argument('modnum', { type: String, required: true })
     this.argument('chapnum', { type: String, required: true })

@@ -2,6 +2,11 @@ language: node_js
 node_js:
   - v10
   - v8
-  - v6
-  - v4
+
+lint:
+  - ./node_modules/.bin/eslint --fix .
+
+test:
+  - yarn run test
+
 after_script: cat ./coverage/lcov.info | coveralls
