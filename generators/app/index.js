@@ -4,24 +4,31 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 
 module.exports = class extends Generator {
-  async prompting () {
+  prompting () {
     // Have Yeoman greet the user.
     this.log(
       yosay(`Welcome to the ${chalk.red('generator-csc160-program')} generator!`)
     )
 
-    // this.answers = await this.prompt([
-    //   {
-    //     type: 'input',
-    //     name: 'moduleNumber',
-    //     message: 'which module are we working on?'
-    //   },
-    //   {
-    //     type: 'input',
-    //     name: 'chapterNumber',
-    //     message: 'which chapter are we working on?'
-    //   }
-    // ])
+    // const answers = this.prompt([{
+    //   type: 'input',
+    //   name: 'modnum',
+    //   message: 'Which module are we in?'
+    // }, {
+    //   type: 'input',
+    //   name: 'chapnum',
+    //   message: 'Which chapter are we in?'
+    // }])
+
+    // this.log('Module number', answers.modnum)
+    // this.log('Chapter number', answers.chapnum)
+    // return answers
+  }
+
+  constructor (args, opts) {
+    super(args, opts)
+    this.argument('modnum', { type: String, required: true })
+    this.argument('chapnum', { type: String, required: true })
   }
 
   writing () {
@@ -29,19 +36,11 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('doc/assigned/main.tex'),
       this.destinationPath('doc/assigned/main.tex')
-      // [
-      //   { moduleNumber: this.prompts.moduleNumber },
-      //   { chapterNumber: this.prompts.chapterNumber }
-      // ]
     )
     // Makefile
     this.fs.copy(
       this.templatePath('Makefile'),
       this.destinationPath('Makefile')
-      // [
-      //   { moduleNumber: this.prompts.moduleNumber },
-      //   { chapterNumber: this.prompts.chapterNumber }
-      // ]
     )
     // src
     this.fs.copy(
@@ -106,9 +105,11 @@ module.exports = class extends Generator {
     )
   }
 
-  todos () {
-    this.log('Please check Makefile and doc/assigned/main.tex for any \'TODO\' marks.')
-    this.log('Wherever you find these, enter the chapter/module number where applicable.')
-    this.log('On UNIX, simply using the command `sed -i \'s/TODO:/<number>/g\' Makefile` should suffice.')
+  install () {
+    this.spawnCommand('sed', ['-i', 's/TODO:MODNUM/' + this.options.modnum + '/g', 'doc/assigned/main.tex'])
+    this.spawnCommand('sed', ['-i', 's/TODO:MODNUM/' + this.options.modnum + '/g', 'Makefile'])
+    this.spawnCommand('sed', ['-i', 's/TODO:CHAPNUM/' + this.options.chapnum + '/g', 'Makefile'])
+    this.spawnCommand('sed', ['-i', 's/TODO:CHAPNUM/' + this.options.chapnum + '/g', 'doc/assigned/main.tex'])
+    this.log('Enjoy!')
   }
 }

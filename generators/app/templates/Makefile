@@ -1,7 +1,7 @@
-# vim: set ts=4 sw=4 ft=sh:
-## Module TODO: Chapter TODO: Program
+# vim: set ts=2 sw=2 ft=sh:
+## Module TODO:MODNUM Chapter TODO:CHAPNUM Program
 ## Ashton S. Hellwig
-## Date: TODO:
+## Date: TODO:DATE
 ## CSC160
 ##
 
@@ -59,13 +59,13 @@ $(UDOCDIR)/%.tex: user-doc-clean
 # Debug
 ## Run
 run-debug:
-	$(DBGOUT)/ChapterTODO:-Debug.bin
+	$(DBGOUT)/ChapterTODO:CHAPNUM-Debug.bin
 ## Build
-debug: $(TGT)/debug/ChapterTODO:-DBG
+debug: $(TGT)/debug/ChapterTODO:CHAPNUM-DBG
 $(TGT)/debug/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGSDBG) -c $< -o $@
-$(TGT)/debug/ChapterTODO:-DBG: $(DBGOBJS)
-	$(CXX) $(LDFLAGS) $(DBGOBJS) -o $(DBGOUT)/ChapterTODO:-Debug.bin
+$(TGT)/debug/ChapterTODO:CHAPNUM-DBG: $(DBGOBJS)
+	$(CXX) $(LDFLAGS) $(DBGOBJS) -o $(DBGOUT)/ChapterTODO:CHAPNUM-Debug.bin
 ## Removes Object Files
 clean-dbg:
 	rm -rf $(TGT)/debug/*.o
@@ -77,13 +77,13 @@ clean-all-dbg:
 # Release
 ## Run
 run-release:
-	$(RELOUT)/ChapterTODO:-Release.bin
+	$(RELOUT)/ChapterTODO:CHAPNUM-Release.bin
 ## Build
-release: $(TGT)/release/ChapterTODO:-REL
+release: $(TGT)/release/ChapterTODO:CHAPNUM-REL
 $(TGT)/release/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGSREL) -c $< -o $@
-$(TGT)/release/ChapterTODO:-REL: $(RELOBJS)
-	$(CXX) $(LDFLAGS) $(RELOBJS) -o $(RELOUT)/ChapterTODO:-Release.bin
+$(TGT)/release/ChapterTODO:CHAPNUM-REL: $(RELOBJS)
+	$(CXX) $(LDFLAGS) $(RELOBJS) -o $(RELOUT)/ChapterTODO:CHAPNUM-Release.bin
 	cp $(UDOCDIR)/userdocs.pdf $(RELOUT)/userdocs.pdf
 ## Removes object files
 clean-rel:
