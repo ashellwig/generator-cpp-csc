@@ -6,4 +6,5 @@ before_script: yarn
 after_script: cat ./coverage/lcov.info | coveralls
 
 test:
-  - yarn run test:ci
+  script:
+    - yarn run test:ci
