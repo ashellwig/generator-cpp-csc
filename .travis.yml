@@ -3,10 +3,11 @@ node_js:
   - v10
   - v8
 before_script: yarn
-after_script: cat ./coverage/lcov.info | coveralls
 
 test:
-  script:
+  before_script:
     - mkdir coverage
-    - jest --ci --coverage --coverageDirectory ./coverage | coveralls
+  script:
+    - jest --ci --coverage --coverageReporters=text-lcov | coveralls
+  after_script:
     - rm -rf coverage
