@@ -52,7 +52,7 @@ $(UDOCDIR)/%.tex: user-doc-clean
 	$(user-doc-clean)
 	cd $(UDOCDIR)
 	latexmk -synctex=1 -interaction=nonstopmode -file-line-error \
-	-jobname=$(UDOCDIR)/userdocs -pdf $(UDOCDIR)/userdocs.tex
+	-jobname=$(UDOCDIR)/main -pdf $(UDOCDIR)/main.tex
 	cd -
 
 
@@ -84,7 +84,7 @@ $(TGT)/release/%.o: $(SRC)/%.cpp
 	$(CXX) $(CXXFLAGSREL) -c $< -o $@
 $(TGT)/release/ChapterTODO:CHAPNUM-REL: $(RELOBJS)
 	$(CXX) $(LDFLAGS) $(RELOBJS) -o $(RELOUT)/ChapterTODO:CHAPNUM-Release.bin
-	cp $(UDOCDIR)/userdocs.pdf $(RELOUT)/userdocs.pdf
+	cp $(UDOCDIR)/main.pdf $(RELOUT)/userdocs.pdf
 ## Removes object files
 clean-rel:
 	rm -rf $(TGT)/release/*.o
