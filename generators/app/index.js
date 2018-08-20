@@ -10,18 +10,21 @@ module.exports = class extends Generator {
       yosay(`Welcome to the ${chalk.red('generator-csc160-program')} generator!`)
     )
 
-    // this.answers = await this.prompt([
-    //   {
-    //     type: 'input',
-    //     name: 'moduleNumber',
-    //     message: 'which module are we working on?'
-    //   },
-    //   {
-    //     type: 'input',
-    //     name: 'chapterNumber',
-    //     message: 'which chapter are we working on?'
-    //   }
-    // ])
+    const answers = await this.prompt([{
+      type: 'input',
+      name: 'modnum',
+      message: 'Which module are we in?'
+    }, {
+      type: 'input',
+      name: 'chapnum',
+      message: 'Which chapter are we in?'
+    }]).then(props => {
+      this.props.modnum = props.modnum
+      this.props.chapnum = props.chapnum
+    })
+
+    this.log('Module number', answers.modnum)
+    this.log('Chapter number', answers.chapnum)
   }
 
   writing () {
@@ -110,5 +113,16 @@ module.exports = class extends Generator {
     this.log('Please check Makefile and doc/assigned/main.tex for any \'TODO\' marks.')
     this.log('Wherever you find these, enter the chapter/module number where applicable.')
     this.log('On UNIX, simply using the command `sed -i \'s/TODO:/<number>/g\' Makefile` should suffice.')
+  }
+
+  install () {
+    this.spawnCommand('sed', ['-i', 's/TODO:MODNUM/' + this.props.modnum + '/g', 'Makefile'])
+    this.spawnCommand('sed', ['-i', 's/TODO:MODNUM/' + this.props.modnum + '/g', 'doc/assigned/main.tex'])
+    this.spawnCommand('sed', ['-i', 's/TODO:CHAPNUM/' + this.props.chapnum + '/g', 'Makefile'])
+    this.spawnCommand('sed', ['-i', 's/TODO:CHAPNUM/' + this.props.chapnum + '/g', 'doc/assigned/main.tex'])
+    this.log('Replaced placeholders with:')
+    this.log('Module number: ', this.props.chapnum)
+    this.log('Chapter number: ', this.props.modnum)
+    this.log('Enjoy!')
   }
 }
