@@ -1,8 +1,8 @@
 {
   "name": "generator-cpp-csc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Scaffolds a project based on specifications in FRCC's CSC160 course",
-  "homepage": "https://github.com/ashellwig/generator-csc160-program",
+  "homepage": "https://github.com/ashellwig/generator-cpp-csc",
   "author": {
     "name": "Ashton Hellwig",
     "email": "ahellwig.dev@gmail.com",
@@ -86,6 +86,6 @@
       "prettier"
     ]
   },
-  "repository": "ashellwig/generator-csc160-program",
+  "repository": "ashellwig/generator-cpp-csc",
   "license": "MIT"
 }
