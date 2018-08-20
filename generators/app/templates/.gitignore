@@ -14,4 +14,8 @@ target/debug/*
 target/release/*
 obj/debug/*
 obj/release/*
+!target/debug/.gitkeep
+!target/release/.gitkeep
+!obj/debug/.gitkeep
+!obj/release/.gitkeep
 
