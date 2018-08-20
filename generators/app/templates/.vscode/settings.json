@@ -4,7 +4,7 @@
   "C_Cpp.clang_format_style": "LLVM",
   "[cpp]": {
     "editor.autoIndent": true,
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.insertSpaces": true
   },
   /* Latex */
