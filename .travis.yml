@@ -2,12 +2,9 @@ language: node_js
 node_js:
   - v10
   - v8
-before_script: yarn
 
 test:
   before_script:
-    - mkdir coverage
+    - yarn
   script:
-    - jest --ci --coverage --coverageReporters=text-lcov | coveralls
-  after_script:
-    - rm -rf coverage
+    - jest --ci --coverage --coverageReporters=text-lcov | coveralls -v
