@@ -7,4 +7,6 @@ after_script: cat ./coverage/lcov.info | coveralls
 
 test:
   script:
-    - yarn run test:ci
+    - mkdir coverage
+    - jest --ci --coverage --coverageDirectory ./coverage | coveralls
+    - rm -rf coverage

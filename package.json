@@ -53,7 +53,7 @@
     "pretest": "eslint .",
     "precommit": "lint-staged",
     "test": "jest",
-    "test:ci": "jest --ci --coverage --coverageReporters=text-lcov --coverageDirectory ./coverage | coveralls"
+    "test:ci": "jest --ci --coverage --coverageDirectory ./coverage"
   },
   "lint-staged": {
     "*.js": [
