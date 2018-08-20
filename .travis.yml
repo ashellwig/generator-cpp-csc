@@ -7,4 +7,4 @@ test:
   before_script:
     - yarn
   script:
-    - jest --ci --coverage --coverageReporters=text-lcov | coveralls -v
+    - jest --ci --coverage --coverageReporters=text-lcov | coveralls
