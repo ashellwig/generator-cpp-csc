@@ -5,8 +5,5 @@ node_js:
 before_script: yarn
 after_script: cat ./coverage/lcov.info | coveralls
 
-lint:
-  - ./node_modules/.bin/eslint --fix .
-
 test:
-  - yarn run test
+  - yarn run test:ci

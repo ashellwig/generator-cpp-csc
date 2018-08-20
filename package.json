@@ -52,7 +52,8 @@
     "prepublishOnly": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "jest --ci --coverage --coverageReporters=text-lcov --coverageDirectory ./coverage | coveralls"
   },
   "lint-staged": {
     "*.js": [
