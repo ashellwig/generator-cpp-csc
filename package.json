@@ -32,7 +32,6 @@
     "husky": "^0.14.3",
     "jest": "^22.0.6",
     "lint-staged": "^6.1.1",
-    "nsp": "^2.8.0",
     "prettier": "^1.11.1",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"
@@ -49,7 +48,6 @@
     "testEnvironment": "node"
   },
   "scripts": {
-    "prepublishOnly": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
     "test": "jest --ci --coverage --coverageReporters=text-lcov | coveralls"
