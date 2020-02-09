@@ -1,6 +1,6 @@
 {
   "name": "generator-cpp-csc",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Scaffolds a project based on specifications in FRCC's CSC160 course",
   "homepage": "https://github.com/ashellwig/generator-cpp-csc",
   "author": {
